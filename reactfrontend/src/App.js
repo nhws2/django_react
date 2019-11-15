@@ -3,6 +3,9 @@ import './App.css';
 import Form from './components/Form'
 import Api from './Api'
 import Post from './components/Post'
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
   state = {
@@ -38,17 +41,25 @@ class App extends Component {
   }
 
   render() {
+    const paper = {
+      margin: "2rem",
+      padding: "2rem",
+    }
     return (
-      <div className="App" >
-        <h1>멋쟁이 사자처럼 대나무숲</h1>
-
-        <Form
-          //props
-          handlingChange={this._handlingChange}
-          handlingSubmit={this._handlingSubmit}
-          title={this.state.title}
-          content={this.state.content}
-        />
+      <Container maxwidth="sm">
+        <Paper style={paper}>
+          <Typography variant="h5" component="h3">
+            멋쟁이 사자처럼 대나무숲
+      </Typography>
+          <Typography component="p">
+            <Form
+              handlingChange={this._handlingChange}
+              handlingSubmit={this._handlingSubmit}
+              title={this.state.title}
+              content={this.state.content}
+            />
+          </Typography>
+        </Paper>
 
         {
           this.state.posts.map((post) =>
@@ -58,7 +69,7 @@ class App extends Component {
           )
         }
 
-      </div>
+      </Container>
     );
   }
 }
